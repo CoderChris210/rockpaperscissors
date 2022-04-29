@@ -1,3 +1,4 @@
+//type play_rock(), player_paper(), play_scissors() for your options. PS: make to the type these things at the very end of the js file! or else the compiler will get very very mad >:(
 const choices = {
     rock_choice : {
       name: 'Rock',
