@@ -81,11 +81,11 @@ const choices = {
   }
   const play_scissors = () => {
     play(choices.scissors_choice, ai_choice)
-        call_player_choices(choices.scissors, ai_choice)
+        call_player_choices(choices.scissors_choice, ai_choice)
   }
   const play_paper = () => {
     play(choices.paper_choice, ai_choice)
-    call_player_choices(choices.paper, ai_choice)
+    call_player_choices(choices.paper_choice, ai_choice)
   }
   //change the thing below to what you want to play dont remove the 'play_' or the '()' or else no worky just change rock to what option you want or keep it as rock
   play_rock()
