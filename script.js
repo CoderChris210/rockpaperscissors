@@ -3,6 +3,8 @@ const rockbtn = document.getElementById('rockbtn')
 const paperbtn = document.getElementById('paperbtn')
 const scissorsbtn = document.getElementById('scissorsbtn')
 const restartbtn = document.getElementById('restartbtn')
+const humanchoicetext = document.getElementById('humanchoicetext')
+const aichoicetext = document.getElementById('aichoicetext')
 const switchinnerHTML = (modinnerhtmlval) => {
   resulttext.innerHTML = modinnerhtmlval
 }
@@ -26,7 +28,7 @@ const choices = {
     value: 2
   }
 }
-  let ai_choice = Math.floor(Math.random() * 3)
+let ai_choice = Math.floor(Math.random() * 2)
   const decideaichoice = () => {
     if (ai_choice === choices.rock_choice.value) {
       ai_choice = choices.rock_choice
@@ -38,11 +40,22 @@ const choices = {
       ai_choice = choices.paper_choice
     }
     else {
-      console.log('AI = NULL: FATAL ERROR IN decideaichoice()')
+      alert('AI = NULL: FATAL ERROR IN decideaichoice()')
     }
   }
   const win_message = (winner) => {
     switchinnerHTML(`<h1>The winner is... \n${winner.toUpperCase()}!</h1>`)
+  }
+  const player_choices = (pl1, pl2) => {
+    humanchoicetext.innerHTML = `You chose: ${pl1.name}`
+    aichoicetext.innerHTML = `The bot chose: ${pl2.name}`
+}
+const call_player_choices = (pl1_choice, pl2_choice) => {
+    player_choices(pl1_choice, pl2_choice)
+}
+  const rotateai_choice = () => {
+    const rotatenumber = Math.floor(Math.random() * 2);
+    ai_choice = rotatenumber;
   }
   decideaichoice()
   winner = null;
@@ -76,14 +89,26 @@ const choices = {
       winner = 'No one'
       win_message(winner)
     }
+    else {
+      alert('FATAL ERROR: play()')
+    }
   }
   const play_rock = () => {
+    rotateai_choice()
+    decideaichoice()
     play(choices.rock_choice, ai_choice)
+    call_player_choices(choices.rock_choice, ai_choice)
   }
   const play_scissors = () => {
+    rotateai_choice()
+    decideaichoice()
+    call_player_choices(choices.scissors_choice, ai_choice)
     play(choices.scissors_choice, ai_choice)
   }
   const play_paper = () => {
+    rotateai_choice()
+    decideaichoice()
+    call_player_choices(choices.paper_choice, ai_choice)
     play(choices.paper_choice, ai_choice)
   }
   const restart = () => {
