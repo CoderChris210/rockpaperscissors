@@ -118,10 +118,6 @@ const rotateai_choice = () => {
     displaychoicepicAI()
     console.log(ai_choice)
   }
-  const restart = () => {
-    switchinnerHTML('<p>waiting for you ;)</p>')
-  }
 rockbtn.addEventListener('click', function() {play_rock();})
 paperbtn.addEventListener('click', function() {play_paper();})
 scissorsbtn.addEventListener('click', function() {play_scissors();})
-restartbtn.addEventListener('click', function() {restart();})
